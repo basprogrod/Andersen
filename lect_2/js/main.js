@@ -65,30 +65,20 @@ console.log(a);
 
 
 function getInterval (n) {
-
-	if (n === 0 || (typeof n) === 'string' || (typeof n) === 'object' || null || undefined) {
-		console.log('введите число отличное от 0')
-		return false;
-
+ if (n === 0 || (typeof n) === 'string' || (typeof n) === 'object' || null || undefined) {
+  console.log('введите число отличное от 0')
+  return false;
 	}
  var start = 0;
  var end = n;
-
  if (n < 0) {
  	end = Math.sqrt(n*n);
-
  } if (n === 0){
     return false;
-
  } else {
  	start -= end;
-
  }
-
-
- // console.log(mod + '!!!');
  for (var i = ++start; i < end; i++) console.log(i);
- // console.log(-mod)
 }
 getInterval('ffff');
 getInterval(0);
