@@ -21,7 +21,7 @@ function concat (str) {
 //////////////////////////////////////////////////////////////////////////////
 
 
-function chek (val) {
+function cheсk (val) {
  if (val === null || val === undefined) return true;
  return false;
 }
