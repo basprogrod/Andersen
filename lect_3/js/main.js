@@ -50,8 +50,6 @@
                         return false;
                     }
                 } else if (first[firstKey] === copy[copyKey] && firstKey === copyKey) {
-                    // console.log(first[firstKey] + ' ' + copy[copyKey]);
-
                     delete copy[copyKey];
                     numComparisonsOfSecond++;
                     break;
@@ -59,7 +57,6 @@
             }
             numComparisonsOfFirst++;
         }
-        // console.log(numComparisonsOfFirst + " " + numComparisonsOfSecond);
         return numComparisonsOfFirst === numComparisonsOfSecond;
     }
 
