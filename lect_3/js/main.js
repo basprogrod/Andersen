@@ -20,10 +20,6 @@
         if (check(obj) || typeof obj === 'string' || typeof obj === 'number' || typeof obj === 'boolean') return 'не объект';
         var changedObj = {};
         for (var key in obj) {
-            // if (typeof obj[key] === 'object') {
-            //  objectMap(obj[key], fn);
-            //  continue;
-            // }
             changedObj[key] = fn(obj[key]);
         }
         return changedObj;
@@ -53,7 +49,7 @@
                     } else {
                         return false;
                     }
-                } else if (first[firstKey] === copy[copyKey]) {
+                } else if (first[firstKey] === copy[copyKey] && firstKey === copyKey) {
                     // console.log(first[firstKey] + ' ' + copy[copyKey]);
 
                     delete copy[copyKey];
@@ -79,7 +75,7 @@
                 delete changedObj[key];
             }
         }
-        return changedObj; 
+        return changedObj;
     }
 
 
