@@ -1,0 +1,79 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body {
+	font-family: sans-serif;
+}
+
+.b {
+	background-color: rgba(150,100,0, 0.1);
+}
+
+.container {
+	height: 100vh;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+}
+.calc{
+	height: 500px;
+	width: 400px;
+	border: 2px solid #aaa;
+	border-radius: 7px;
+}
+.display{
+	height: 80px;
+	width: 350px;
+	border: 1px solid #aaa;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+	text-align: right;
+	font-size: 36px;
+	padding-top: 35px;
+	padding-right: 10px;
+}
+
+.dial{
+	/*padding: 25px;*/
+	height: 345px;
+	width: 350px;
+	/*border: 1px solid #aaa;*/
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+}
+.btn{
+	font-size: 24px;
+	display: -webkit-inline-flex;
+	display: -moz-inline-flex;
+	display: -ms-inline-flex;
+	display: -o-inline-flex;
+	display: inline-flex;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+	height: 60px;
+	width: 60px;
+	border: 1px solid #aaa;
+	border-radius: 5px;
+ margin-left: 5px;
+ margin-right: 5px;
+ margin-top: 5px;
+ cursor: pointer;
+}
+.btn:hover {
+	border: 1px solid;
+}
