@@ -3,10 +3,29 @@ var digs = document.querySelectorAll('.number'),
     result = document.querySelector('.result'),
     dec = document.querySelector('.dec'),
     clear = document.querySelector('.clear'),
-    display = document.querySelector('.display');
+    clear = document.querySelector('.clear'),
+    display = document.querySelector('.display'),
+    log = document.querySelector('.log'),
+    btns = document.querySelectorAll('.btn'),
     currentNum = 0,
     newNum = false,
-    pandingOperation = '';
+    pandingOperation = '',
+    str = '';
+
+
+
+
+ for (var i = 0; i < btns.length; i++) {
+    var btn = btns[i];
+    btn.addEventListener('click', function (e) {
+      loger(this.innerHTML);
+    }); 
+ }
+    function loger(val) {
+     // if (display.innerHTML === '0') return;
+     str += val; 
+     // console.log(str)   
+    }
 
 
  for (var i = 0; i < digs.length; i++) {
@@ -28,8 +47,16 @@ var digs = document.querySelectorAll('.number'),
   display.innerHTML = 0;
   currentNum = 0;
   newNum = false;
+  str = '';
  }); 
- result.addEventListener('click', null); 
+ result.addEventListener('click', function() {
+  if (display.innerHTML === '0') return;
+  str += currentNum;
+  var strok = document.createElement('div');
+  strok.innerHTML = str;
+  log.appendChild(strok);
+  str = '';
+ }); 
 
  function numbPress (number) {
   if (newNum) {
