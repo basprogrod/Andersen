@@ -10,10 +10,8 @@
 
     function isEmpty(obj) {
         if (check(obj) || typeof obj === 'string' || typeof obj === 'number' || typeof obj === 'boolean') return;
-        var num = 0;
-        for (var key in obj) num++;
-        if (num === 0) return true;
-        if (num > 0) return false;
+        for (var key in obj) return false;
+        return true;
     }
 
     function objectMap(obj, fn) {
@@ -100,7 +98,7 @@ firstUser.can = {
     eat: true
 }
 
-console.log(m.isEmpty(firstUser));
+console.log(m.isEmpty(firstUser) );
 console.log(m.isNaN(0));
 console.log(m.isNaN(null));
 console.log(m.isUndefined());
