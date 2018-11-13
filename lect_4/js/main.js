@@ -1,4 +1,4 @@
-var nums = document.querySelectorAll('.number'),
+var digs = document.querySelectorAll('.number'),
     operations = document.querySelectorAll('.operation'),
     result = document.querySelector('.result'),
     dec = document.querySelector('.dec'),
@@ -9,8 +9,8 @@ var nums = document.querySelectorAll('.number'),
     pandingOperation = '';
 
 
- for (var i = 0; i < nums.length; i++) {
-    var number = nums[i];
+ for (var i = 0; i < digs.length; i++) {
+    var number = digs[i];
     number.addEventListener('click', function (e) {
       numbPress(e.target.textContent);
     }); 
@@ -23,48 +23,149 @@ var nums = document.querySelectorAll('.number'),
     }); 
  }
 
- dec.addEventListener('click', dot);
- clear.addEventListener('click', null); 
+ // dec.addEventListener('click', dot);
+ clear.addEventListener('click', function(){
+  display.innerHTML = 0;
+  currentNum = 0;
+  newNum = false;
+ }); 
  result.addEventListener('click', null); 
 
  function numbPress (number) {
-  if(display.innerHTML === '0') {
+  if (newNum) {
    display.innerHTML = number;
+   newNum = false;
   } else {
-  display.innerHTML += number;
+
+     if(display.innerHTML === '0') {
+      display.innerHTML = number;
+     } else {
+     display.innerHTML += number;
+     }
+
   }
+  
  }
 
 
 
  function toDo (op) {
-  if (op === '=') {
-   
-   if (true) {
-    display.innerHTML = (sum(display.innerHTML));
-   }
+  a = +display.innerHTML;
 
-
+  if(newNum && pandingOperation !== '=') {
+   display.innerHTML = currentNum;
   } else {
-   display.innerHTML += op;
-  };
-
- //  if(newNum) {
- //   display.innerHTML = currentNum;
- //  } else {
- //   newNum = true;
- //  }
-  function sum (str) {
-   var arr = str.split('+');
-   return arr.reduce(function(acc, i){
-    return +acc + +i;
-   });
+   newNum = true;
+   if (pandingOperation === '+') {
+    currentNum += a;
+   } else if (pandingOperation === '-') {
+    currentNum -= a;
+   }else if (pandingOperation === '*') {
+    currentNum *= a;
+   }else if (pandingOperation === '/') {
+    currentNum /= a;
+   }else {
+    currentNum = a;
+   }
+   display.innerHTML = currentNum;
+   pandingOperation = op;
   }
  }
 
  function dot () {
- 
+  // display.innerHTML += this.innerHTML;
  }
 
 
 
+// var str = '4-(-16/8*2*2)+3*2';
+
+// function calc (str) {
+
+//  var arr = [];
+//  var preRes = [];
+//  var currentOperation = [];
+
+//  arr = str.split('');
+//  console.log(arr)
+//  for (var i = 0; i < arr.length; i++) {
+//   if (arr[i] === '*' || arr[i] === '/' ) {
+//    var n = i;
+//    while (true) {  
+//     n--;
+//     currentOperation.unshift(arr[n])
+//     if (arr[n] === '-' || arr[n] === '+' || arr[n] === '*' || arr[n] === '/' ) {
+//      currentOperation.shift();
+//      break;
+//     }
+//    }//while
+//    n = i;
+//    currentOperation.push(arr[n])
+//    n++;
+//    while (true) {
+//     currentOperation.push(arr[n])
+//     if (arr[n] === '-' || arr[n] === '+' || arr[n] === '*' || arr[n] === '/' || n === arr.length ) {
+//      currentOperation.pop();
+//      break;
+//     }
+//     n++;
+//    }//while
+
+//    if(currentOperation[currentOperation.indexOf('/')] === '/') { 
+//      preRes.push(del());
+//      currentOperation = [];
+//      function del() {
+//            var a = '';
+//            var b = '';
+//            var swich = false;
+//            for (var i = 0; i < currentOperation.length; i++) {
+//             if (swich === true) {
+//              b += currentOperation[i];
+//             } else {
+//              if(currentOperation[i] === '/') {swich = true; continue;};
+//             a += currentOperation[i];
+//             }//if
+//            }//for
+//            swich = false;
+//            return +a / +b;
+//           };
+
+//    }else if (currentOperation[currentOperation.indexOf('*')] === '*') {
+//     preRes.push(mul());
+//     currentOperation = [];
+//     function mul() {
+//           var a = '';
+//           var b = '';
+//           var swich = false;
+//           for (var i = 0; i < currentOperation.length; i++) {
+//            if (swich === true) {
+//             b += currentOperation[i];
+//            } else {
+//             if(currentOperation[i] === '*') {swich = true; continue;};
+//            a += currentOperation[i];
+//            }//if
+//           }//for
+//           swich = false;
+//           return +a * +b;
+//          };
+//    }
+//   }//if
+
+//  }//for
+//  console.log(currentOperation);
+//  console.log(preRes);
+//  return;
+// }
+
+// // calc(str);
+
+// function allMulDelOperations(str) {
+//  var expArr = [];
+//  expArr = str.split('');
+
+//   function expInBrackets() {
+//    expArr
+//  }
+
+//  return mulArr;
+// }
