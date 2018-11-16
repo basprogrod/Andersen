@@ -1,107 +1,105 @@
-var digs = document.querySelectorAll('.number'),
-    operations = document.querySelectorAll('.operation'),
-    result = document.querySelector('.result'),
-    dec = document.querySelector('.dec'),
-    clear = document.querySelector('.clear'),
-    clear = document.querySelector('.clear'),
-    display = document.querySelector('.display'),
-    log = document.querySelector('.log'),
-    btns = document.querySelectorAll('.btn'),
-    currentNum = 0,
-    newNum = false,
-    pandingOperation = '',
-    str = '';
+;(function () {
+   var digs = document.querySelectorAll('.number'),
+       operations = document.querySelectorAll('.operation'),
+       result = document.querySelector('.result'),
+       dec = document.querySelector('.dec'),
+       clear = document.querySelector('.clear'),
+       display = document.querySelector('.display'),
+       log = document.querySelector('.log'),
+       btns = document.querySelectorAll('.btn'),
+       currentNum = 0,
+       newNum = false,
+       pandingOperation = '',
+       str = '';
 
 
 
 
- for (var i = 0; i < btns.length; i++) {
-    var btn = btns[i];
-    btn.addEventListener('click', function (e) {
-      loger(this.innerHTML);
-    }); 
- }
-    function loger(val) {
-     // if (display.innerHTML === '0') return;
-     str += val; 
-     // console.log(str)   
-    }
 
-
- for (var i = 0; i < digs.length; i++) {
-    var number = digs[i];
-    number.addEventListener('click', function (e) {
-      numbPress(e.target.textContent);
-    }); 
- }
-
- for (var i = 0; i < operations.length; i++) {
-    var operation = operations[i];
-    operation.addEventListener('click', function (e) {
-     toDo(e.target.textContent);
-    }); 
- }
-
- // dec.addEventListener('click', dot);
- clear.addEventListener('click', function(){
-  display.innerHTML = 0;
-  currentNum = 0;
-  newNum = false;
-  str = '';
- }); 
- result.addEventListener('click', function() {
-  if (display.innerHTML === '0') return;
-  str += currentNum;
-  var strok = document.createElement('div');
-  strok.innerHTML = str;
-  log.appendChild(strok);
-  str = '';
- }); 
-
- function numbPress (number) {
-  if (newNum) {
-   display.innerHTML = number;
-   newNum = false;
-  } else {
-
-     if(display.innerHTML === '0') {
-      display.innerHTML = number;
-     } else {
-     display.innerHTML += number;
+  for (var i = 0; i < btns.length; i++) {
+     var btn = btns[i];
+     btn.addEventListener('click', function (e) {
+       loger(this.innerHTML);
+     }); 
+  }
+     function loger(val) {
+      // if (display.innerHTML === '0') return;
+      str += val; 
+      // console.log(str)   
      }
 
+
+  for (var i = 0; i < digs.length; i++) {
+     var number = digs[i];
+     number.addEventListener('click', function (e) {
+       numbPress(e.target.textContent);
+     }); 
   }
-  
- }
 
+  for (var i = 0; i < operations.length; i++) {
+     var operation = operations[i];
+     operation.addEventListener('click', function (e) {
+      toDo(e.target.textContent);
+     }); 
+  }
 
+  // dec.addEventListener('click', dot);
+  clear.addEventListener('click', function(){
+   display.innerHTML = 0;
+   currentNum = 0;
+   newNum = false;
+   str = '';
+  }); 
+  result.addEventListener('click', function() {
+   if (display.innerHTML === '0') return;
+   str += currentNum;
+   var strok = document.createElement('div');
+   strok.innerHTML = str;
+   log.appendChild(strok);
+   str = '';
+  }); 
 
- function toDo (op) {
-  a = +display.innerHTML;
+  function numbPress (number) {
+   if (newNum) {
+    display.innerHTML = number;
+    newNum = false;
+   } else {
 
-  if(newNum && pandingOperation !== '=') {
-   display.innerHTML = currentNum;
-  } else {
-   newNum = true;
-   if (pandingOperation === '+') {
-    currentNum += a;
-   } else if (pandingOperation === '-') {
-    currentNum -= a;
-   }else if (pandingOperation === '*') {
-    currentNum *= a;
-   }else if (pandingOperation === '/') {
-    currentNum /= a;
-   }else {
-    currentNum = a;
+      if(display.innerHTML === '0') {
+       display.innerHTML = number;
+      } else {
+      display.innerHTML += number;
+      }
+
    }
-   display.innerHTML = currentNum;
-   pandingOperation = op;
+   
   }
- }
 
- function dot () {
-  // display.innerHTML += this.innerHTML;
- }
+
+
+  function toDo (op) {
+   a = +display.innerHTML;
+
+   if(newNum && pandingOperation !== '=') {
+    display.innerHTML = currentNum;
+   } else {
+    newNum = true;
+    if (pandingOperation === '+') {
+     currentNum += a;
+    } else if (pandingOperation === '-') {
+     currentNum -= a;
+    }else if (pandingOperation === '*') {
+     currentNum *= a;
+    }else if (pandingOperation === '/') {
+     currentNum /= a;
+    }else {
+     currentNum = a;
+    }
+    display.innerHTML = currentNum;
+    pandingOperation = op;
+   }
+  }
+})();
 
 
 
